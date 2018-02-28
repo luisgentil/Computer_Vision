@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+  <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+  <title>tracking.js - first tracking</title>
+  <script src="js/tracking-min.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+
+  <style>
+  video, canvas {
+    margin-left: 2px;
+    margin-top: 2px;
+    position: absolute;
+  }
+  </style>
+</head>
+<body>
+  <video id="myVideo" width="400" height="300" preload autoplay loop muted></video>
+  <canvas id="canvas" width="400" height="300"></canvas>
+  <script>
+  var colors = new tracking.ColorTracker(['magenta', 'cyan', 'yellow']);
+  var canvas = document.getElementById('canvas');
+  var context = canvas.getContext('2d');
+
+  colors.on('track', function(event) {
+  //  context.strokeStyle = '#fff';
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (event.data.length === 0) {
+      // No colors were detected in this frame.
+    } else {
+     // console.log(event.data);
+      event.data.forEach(function(rect) {
+        context.strokeStyle = rect.color;
+        context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+    //    console.log(rect.x, rect.y, rect.height, rect.width, rect.color);
+        context.font = '11px Helvetica';
+        context.fillStyle = rect.color;
+        context.fillText(rect.color, rect.x + rect.width + 5, rect.y + 11);
+      });
+    }
+  });
+
+  tracking.track('#myVideo', colors, {camera: true});
+  </script>
+</body>
+</html>
