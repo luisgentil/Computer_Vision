@@ -20,33 +20,39 @@
   </style>
 </head>
 <body>
+  <h3>my video</h3>
   <video id="myVideo" width="400" height="300" preload autoplay loop muted></video>
   <canvas id="canvas" width="400" height="300"></canvas>
   <script>
-  var colors = new tracking.ColorTracker(['magenta', 'cyan', 'yellow']);
-  var canvas = document.getElementById('canvas');
-  var context = canvas.getContext('2d');
+  document.addEventListener("deviceready", onDeviceReady, false);
 
-  colors.on('track', function(event) {
-  //  context.strokeStyle = '#fff';
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    function onDeviceReady() {
+      console.log(navigator.device.capture);
+      var colors = new tracking.ColorTracker(['magenta', 'cyan', 'yellow']);
+      var canvas = document.getElementById('canvas');
+      var context = canvas.getContext('2d');
 
-    if (event.data.length === 0) {
-      // No colors were detected in this frame.
-    } else {
-     // console.log(event.data);
-      event.data.forEach(function(rect) {
-        context.strokeStyle = rect.color;
-        context.strokeRect(rect.x, rect.y, rect.width, rect.height);
-    //    console.log(rect.x, rect.y, rect.height, rect.width, rect.color);
-        context.font = '11px Helvetica';
-        context.fillStyle = rect.color;
-        context.fillText(rect.color, rect.x + rect.width + 5, rect.y + 11);
+      colors.on('track', function(event) {
+      //  context.strokeStyle = '#fff';
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (event.data.length === 0) {
+          // No colors were detected in this frame.
+        } else {
+         // console.log(event.data);
+          event.data.forEach(function(rect) {
+            context.strokeStyle = rect.color;
+            context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+        //    console.log(rect.x, rect.y, rect.height, rect.width, rect.color);
+            context.font = '11px Helvetica';
+            context.fillStyle = rect.color;
+            context.fillText(rect.color, rect.x + rect.width + 5, rect.y + 11);
+          });
+        }
       });
+      tracking.track('#myVideo', colors, {camera: true});
     }
-  });
 
-  tracking.track('#myVideo', colors, {camera: true});
   </script>
 </body>
 </html>
