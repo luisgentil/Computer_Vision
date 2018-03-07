@@ -32,7 +32,7 @@
   navigator.mediaDevices.enumerateDevices().then(function (devices) {
     for(var i = 0; i < devices.length; i ++){
         var device = devices[i];
-        console.log("devices[i]",devices[i]);
+        console.log(devices[i], devices[i]);
         //Microsoft LifeCam Studio (045e:0772)
         //Logitech HD Pro Webcam C920 (046d:082d)
         if (device.kind === 'videoinput' && device.label === camera) {
