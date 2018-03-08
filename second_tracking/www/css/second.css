@@ -8,6 +8,12 @@ body {
   color: antiquewhite;
 }
 
+video, canvas {
+    margin-left: 2px;
+    margin-top: 2px;
+    position: absolute;
+  }
+
 .header {
   padding: 0 10px;
   color: #666;
