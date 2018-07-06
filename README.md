@@ -8,3 +8,4 @@ Primer test: first_tracking, en este mismo git
 
 El fichero cascade-700-1400-19.xml ha sido convertido a formato tracking-js usando el módulo 'haar2tjs', de wildhaber/haar2tjs.
 
+biblio_tracking: intento de eso mismo  
