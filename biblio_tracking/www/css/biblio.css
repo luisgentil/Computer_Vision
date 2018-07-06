@@ -1,0 +1,53 @@
+body {
+  margin: 0px;
+  padding: 20px 0;
+  font-size: 18px;
+  font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  background-color: cornflowerblue;
+  color: antiquewhite;
+}
+
+.header {
+  padding: 0 10px;
+  color: #666;
+  background-color: #EEE;
+  text-align: center;
+  height: 48.4px;
+  line-height: 48.4px;
+}
+
+.footer {
+  padding:5px;
+  font-style:italic;
+  font-size:small;
+  text-align: center;
+}
+
+p {
+  font-size: 0.8em;
+}
+
+#canvas {
+    margin-left: 2px;
+    margin-top: 2px;
+    position: absolute;
+  }
+
+#myVideo {
+    margin-left: 2px;
+    margin-top: 2px;
+    position: absolute;
+}
+
+#myOther {
+    margin-left: 405px;
+    margin-top: 2px;
+    position: absolute;
+}
+
+#myBW {
+    margin-left: 405px;
+    margin-top: 2px;
+    position: absolute;
+}
