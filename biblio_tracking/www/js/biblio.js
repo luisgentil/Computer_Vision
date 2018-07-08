@@ -4,13 +4,13 @@
 var app = {
   inicio: function() {
 
-  BlancoYNegro = function() {
+ /* BlancoYNegro = function() {
   var pixels = document.getElementById('myOther');
   var ctx = pixels.getContext("2d");
   var imgData=ctx.getImageData(10,10,50,50);
   ctx.putImageData(imgData,10,70);
  // tracking.Image.grayscale(pixels, 400, 300);
-},
+},*/
 
     document.getElementById('notas').innerText ="OK!";
 
